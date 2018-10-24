@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Turtle Power!</title>
+
+  <!-- We link our html to the Bootstrap CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/style/style.css">
+
+</head>
+
+<body>
+    <div class="gameTitle">
+        <h1>Turtle Power!</h1>
+    </div>
+    <div class="container contentContainer">
+        <div id="ruleSet">
+            <ul>
+                <li>You will be given a random number at the start of the game.</li>
+                <li>There are four Teenage Mutant Ninja Turtles below.  By clickong on a turtle, you will add a specific amount of points to your total score.</li>
+                <li>You win the game by matching your total score to the random number goal.  You will lose if your score goes above the random number.</li>
+                <li>The value of each Turtle is hidden from you and changes only at the start of every round.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container gameContainer">
+        <div class="row">
+            <div class="col-md-6" id="randomGoal">
+
+            </div>
+            <div class="col-md-6" id="scoreboard">
+                <div id="scoreboardWins">
+                    Wins:
+                </div>
+                <div id="scoreboardLosses">
+                    Losses:
+                </div>
+            </div>
+        </div>
+        <div class="row turtleContainer">
+            <div class="col-md-3" id="turtle1">
+                <img id="turtleimage1" src="assets/images/donatello.gif" height="200px" width="150px">
+            </div>
+            <div class="col-md-3" id="turtle2">
+                <img id="turtleimage2" src="assets/images/leonardo.jpg" height="200px" width="150px">
+            </div>
+            <div class="col-md-3" id="turtle3">
+                <img id="turtleimage3" src="assets/images/michael.gif" height="200px" width="150px">
+            </div>
+            <div class="col-md-3" id="turtle4">
+                <img id="turtleimage4" src="assets/images/raphael.jpg" height="200px" width="150px">
+            </div>
+
+
+        </div>
+    </div>
