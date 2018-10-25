@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$(document).ready(function() {
     // page load check.
 
 // ********Global Variables*************
@@ -22,19 +22,29 @@ $( document ).ready(function() {
 
         // randomTarget--- The random number shown at the start of the game should be between 19 - 120.
         // choose random number between 19-120
-        randomTarget = [Math.floor(Math.random) * 101 + 19];
+        randomTarget = (Math.floor((Math.random) * 101) + 19);
+        console.log("Target: " + randomTarget);
 
         // display random number to #randomGoal
         $("#randomTarget").text(randomTarget);
 
             
         // turtleValues-- Random numbers 1-12 should be assigned to each turtleValue
-        var turtleValue1 = [Math.floor(Math.random) * 12 + 1];
-        var turtleValue2 = [Math.floor(Math.random) * 12 + 1];
-        var turtleValue3 = [Math.floor(Math.random) * 12 + 1];
-        var turtleValue4 = [Math.floor(Math.random) * 12 + 1];
+        var turtleValue1 = (Math.floor((Math.random) * 12) + 1);
+        console.log("1st " + turtleValue1);
+        var turtleValue2 = (Math.floor((Math.random) * 12) + 1);
+        console.log("2nd " + turtleValue2);
+        var turtleValue3 = (Math.floor((Math.random) * 12) + 1);
+        console.log("3rd " + turtleValue3)
+        var turtleValue4 =(Math.floor((Math.random) * 12) + 1);
+        console.log("4th " + turtleValue4);
 
-    }
+        // hide start button
+        $("#startGameBtn").hide();
+
+    };
+
+    $("#startGameBtn").on("click", newGame());
 
 // **********What happens when you click a turtle*******************
 
@@ -54,21 +64,10 @@ $( document ).ready(function() {
         currentScore = currentScore + turtlevalue3;
         $("#currentScore").text(currentScore);
     });
-    $("#turtleImage2").on("click", function addTurtle2() {
-        currentScore = currentScore + turtlevalue2;
+    $("#turtleImage4").on("click", function addTurtle4() {
+        currentScore = currentScore + turtlevalue4;
         $("#currentScore").text(currentScore);
     });
-
-
-// *********RESET ROUND************************
-
-    // If gameBegin is false we want to start a new game
-    if (!gameBegin) {
-        gameBegin = True;
-        currentScore = 0;
-        newGame();
-    }
-
     
 //  ******LOSS CONDITION******
 
@@ -77,38 +76,17 @@ $( document ).ready(function() {
         scoreboardLosses++;
         $("#scoreboardLosses").text("Losses: " + scoreboardLosses);
         gameBegin = false;
-    }
+        $("#startGameBtn").show();
+
+    };
 
 // *******WIN CONDITION**********
 
     // If currentScore is EQUAL to randomTarget then add a win to scoreboard and RESET the game.
     if (currentScore === randomTarget) {
         scoreboardWins++;
-        $("#scoreboardWins").text("Wins: " + scoreboardWins);
+        $("#scoreboardWins").text("Wins: " + scoreboardWins );
         gameBegin = false;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-        
-
-
+        $("#startGameBtn").show();
+    };
 })
