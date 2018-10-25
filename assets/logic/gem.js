@@ -20,29 +20,36 @@ $(document).ready(function() {
 
     function newGame() {
 
+        gameBegin = true;
+
         // randomTarget--- The random number shown at the start of the game should be between 19 - 120.
         // choose random number between 19-120
-        randomTarget = (Math.floor((Math.random) * 101) + 19);
+        randomTarget = (Math.floor((Math.random()) * 101) + 19);
         console.log("Target: " + randomTarget);
 
         // display random number to #randomGoal
-        $("#randomTarget").text(randomTarget);
+        $("#randomTarget").text("Target: " + randomTarget);
 
             
         // turtleValues-- Random numbers 1-12 should be assigned to each turtleValue
-        var turtleValue1 = (Math.floor((Math.random) * 12) + 1);
+        var turtleValue1 = (Math.floor((Math.random()) * 12) + 1);
         console.log("1st " + turtleValue1);
-        var turtleValue2 = (Math.floor((Math.random) * 12) + 1);
+        var turtleValue2 = (Math.floor((Math.random()) * 12) + 1);
         console.log("2nd " + turtleValue2);
-        var turtleValue3 = (Math.floor((Math.random) * 12) + 1);
+        var turtleValue3 = (Math.floor((Math.random()) * 12) + 1);
         console.log("3rd " + turtleValue3)
-        var turtleValue4 =(Math.floor((Math.random) * 12) + 1);
+        var turtleValue4 = (Math.floor((Math.random()) * 12) + 1);
         console.log("4th " + turtleValue4);
 
         // hide start button
         $("#startGameBtn").hide();
 
     };
+    
+    console.log(turtleValue1);
+    console.log(turtleValue2);
+    console.log(turtleValue3);
+    console.log(turtleValue4);
 
     $("#startGameBtn").on("click", newGame());
 
@@ -51,20 +58,20 @@ $(document).ready(function() {
     // Each image CLICK will add their value to the currentScore
     // currentScore is updated and pushed to #currentScore
         
-    $("#turtleImage1").on("click", function addTurtle1() {
+    $("#turtleImage1").on("click", function() {
         currentScore = currentScore + turtlevalue1;
         $("#currentScore").text(currentScore);
     });
     // Repeat for each turtle
-    $("#turtleImage2").on("click", function addTurtle2() {
+    $("#turtleImage2").on("click", function() {
         currentScore = currentScore + turtlevalue2;
         $("#currentScore").text(currentScore);
     });
-    $("#turtleImage3").on("click", function addTurtle3() {
+    $("#turtleImage3").on("click", function() {
         currentScore = currentScore + turtlevalue3;
         $("#currentScore").text(currentScore);
     });
-    $("#turtleImage4").on("click", function addTurtle4() {
+    $("#turtleImage4").on("click", function() {
         currentScore = currentScore + turtlevalue4;
         $("#currentScore").text(currentScore);
     });
