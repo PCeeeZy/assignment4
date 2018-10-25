@@ -1,7 +1,10 @@
 $(document).ready(function() {
-    // page load check.
+    // page load check.   
 
-// ********Global Variables*************
+// **************What happens upon start of new game************
+
+    $("#startGameBtn").on("click", function newGame() {
+        // ********Global Variables*************
         var randomTarget;
     
         var turtleValue1;
@@ -12,13 +15,6 @@ $(document).ready(function() {
         var currentScore = 0;
         var scoreboardWins = 0;
         var scoreboardLossses = 0;
-
-        var gameBegin = false;
-    
-
-// **************What happens upon start of new game************
-
-    function newGame() {
 
         gameBegin = true;
 
@@ -32,68 +28,59 @@ $(document).ready(function() {
 
             
         // turtleValues-- Random numbers 1-12 should be assigned to each turtleValue
-        var turtleValue1 = (Math.floor((Math.random()) * 12) + 1);
+        turtleValue1 = (Math.floor((Math.random()) * 12) + 1);
         console.log("1st " + turtleValue1);
-        var turtleValue2 = (Math.floor((Math.random()) * 12) + 1);
+        turtleValue2 = (Math.floor((Math.random()) * 12) + 1);
         console.log("2nd " + turtleValue2);
-        var turtleValue3 = (Math.floor((Math.random()) * 12) + 1);
+        turtleValue3 = (Math.floor((Math.random()) * 12) + 1);
         console.log("3rd " + turtleValue3)
-        var turtleValue4 = (Math.floor((Math.random()) * 12) + 1);
+        turtleValue4 = (Math.floor((Math.random()) * 12) + 1);
         console.log("4th " + turtleValue4);
 
         // hide start button
         $("#startGameBtn").hide();
 
-    };
-    
-    console.log(turtleValue1);
-    console.log(turtleValue2);
-    console.log(turtleValue3);
-    console.log(turtleValue4);
+        // **********What happens when you click a turtle*******************
 
-    $("#startGameBtn").on("click", newGame());
+        // Each image CLICK will add their value to the currentScore
+        // currentScore is updated and pushed to #currentScore
+            
+        $("#turtle1").on("click", function() {
+            currentScore = currentScore + turtleValue1;
+            $("#currentScore").text(currentScore);
+        });
+        // Repeat for each turtle
+        $("#turtle2").on("click", function() {
+            currentScore = currentScore + turtleValue2;
+            $("#currentScore").text(currentScore);
+        });
+        $("#turtle3").on("click", function() {
+            currentScore = currentScore + turtleValue3;
+            $("#currentScore").text(currentScore);
+        });
+        $("#turtle4").on("click", function() {
+            currentScore = currentScore + turtleValue4;
+            $("#currentScore").text(currentScore);
+        });
+        //  ******LOSS CONDITION******
 
-// **********What happens when you click a turtle*******************
+        // If currentScore is GREATER than randomTarget then add a loss to scoreboard and reset the game.
+        if (currentScore > randomTarget) {
+            scoreboardLosses++;
+            $("#scoreboardLosses").text("Losses: " + scoreboardLosses);
+            gameBegin = false;
+            $("#startGameBtn").show();
 
-    // Each image CLICK will add their value to the currentScore
-    // currentScore is updated and pushed to #currentScore
-        
-    $("#turtleImage1").on("click", function() {
-        currentScore = currentScore + turtlevalue1;
-        $("#currentScore").text(currentScore);
-    });
-    // Repeat for each turtle
-    $("#turtleImage2").on("click", function() {
-        currentScore = currentScore + turtlevalue2;
-        $("#currentScore").text(currentScore);
-    });
-    $("#turtleImage3").on("click", function() {
-        currentScore = currentScore + turtlevalue3;
-        $("#currentScore").text(currentScore);
-    });
-    $("#turtleImage4").on("click", function() {
-        currentScore = currentScore + turtlevalue4;
-        $("#currentScore").text(currentScore);
-    });
-    
-//  ******LOSS CONDITION******
+        };
 
-    // If currentScore is GREATER than randomTarget then add a loss to scoreboard and reset the game.
-    if (currentScore > randomTarget) {
-        scoreboardLosses++;
-        $("#scoreboardLosses").text("Losses: " + scoreboardLosses);
-        gameBegin = false;
-        $("#startGameBtn").show();
+        // *******WIN CONDITION**********
 
-    };
-
-// *******WIN CONDITION**********
-
-    // If currentScore is EQUAL to randomTarget then add a win to scoreboard and RESET the game.
-    if (currentScore === randomTarget) {
-        scoreboardWins++;
-        $("#scoreboardWins").text("Wins: " + scoreboardWins );
-        gameBegin = false;
-        $("#startGameBtn").show();
-    };
+        // If currentScore is EQUAL to randomTarget then add a win to scoreboard and RESET the game.
+        if (currentScore === randomTarget) {
+            scoreboardWins++;
+            $("#scoreboardWins").text("Wins: " + scoreboardWins );
+            gameBegin = false;
+            $("#startGameBtn").show();
+        };
+    })
 })
