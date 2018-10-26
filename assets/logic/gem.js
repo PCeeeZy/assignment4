@@ -2,6 +2,7 @@ $(document).ready(function() {
     
     // page load check.  
     $("#winningImage").hide(); 
+    $(".turtleContainer").hide();
 
 // ********Global Variables*************
     var randomTarget;
@@ -44,6 +45,8 @@ $(document).ready(function() {
 
         // hide start button
         $("#startGameBtn").hide();
+        $(".turtleContainer").show();
+
         
     });
 
@@ -93,6 +96,7 @@ $(document).ready(function() {
         if (currentScore > randomTarget) {
             scoreboardLossses++;
             $("#scoreboardLosses").text("Losses: " + scoreboardLossses);
+            $(".turtleContainer").hide();
             // gameBegin = false;
             $("#startGameBtn").show();
             currentScore = 0;
@@ -110,6 +114,7 @@ $(document).ready(function() {
         if (currentScore === randomTarget) {
             scoreboardWins++;
             $("#scoreboardWins").text("Wins: " + scoreboardWins );
+            $(".turtleContainer").hide();
             $("#winningImage").show();
             setTimeout(function() {
                 $("#winningImage").hide()
