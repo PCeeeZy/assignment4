@@ -1,10 +1,9 @@
 $(document).ready(function() {
-    // page load check.   
+    
+    // page load check.  
+    $("#winningImage").hide(); 
 
-// **************What happens upon start of new game************
-
-    $("#winningImage").hide();
-
+// ********Global Variables*************
     var randomTarget;
         
     var turtleValue1;
@@ -18,9 +17,9 @@ $(document).ready(function() {
     var enableImageClick = true;
     randomTarget = (Math.floor((Math.random()) * 101) + 19);
 
-    $("#startGameBtn").on("click", function newGame() {
+    // **************What happens upon start of new game************
 
-        // ********Global Variables*************
+    $("#startGameBtn").on("click", function newGame() {
         
         enableImageClick = true;
         // gameBegin = true;
@@ -47,7 +46,8 @@ $(document).ready(function() {
         $("#startGameBtn").hide();
         
     });
-            // **********What happens when you click a turtle*******************
+
+// **********What happens when you click a turtle*******************
 
     // Each image CLICK will add their value to the currentScore
     // currentScore is updated and pushed to #currentScore
@@ -85,6 +85,8 @@ $(document).ready(function() {
         $("#currentScore").text("Your current score is: " + currentScore);
         checkScore();
     });
+
+
     function checkScore(){
         //  ******LOSS CONDITION******
         // If currentScore is GREATER than randomTarget then add a loss to scoreboard and reset the game.
