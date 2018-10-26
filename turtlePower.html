@@ -21,23 +21,28 @@
         <div id="ruleSet">
             <ul>
                 <li>You will be given a random number at the start of the game.</li>
-                <li>There are four Teenage Mutant Ninja Turtles below.  By clickong on a turtle, you will add a specific amount of points to your total score.</li>
+                <li>There are four Teenage Mutant Ninja Turtles below.  By clicking on a turtle, you will add a specific amount of points to your total score.</li>
                 <li>You win the game by matching your total score to the random number goal.  You will lose if your score goes above the random number.</li>
                 <li>The value of each Turtle is hidden from you and changes only at the start of every round.</li>
             </ul>
         </div>
     </div>
     <div class="container gameContainer">
-        <div class="row">
-            <div class="col-md-6" id="randomTarget">
-                Get this number: 
+        <div class="row roundInfo">
+            <div class="col-md-6"> 
+                <div id="randomTarget">
+                    Target Number Here!
+                </div>
+                <div id="currentScore">
+                    Your Score Will Update Here! 
+                </div>
             </div>
             <div class="col-md-6" id="scoreboard">
                 <div id="scoreboardWins">
-                    Wins:
+                    Wins: 0
                 </div>
                 <div id="scoreboardLosses">
-                    Losses:
+                    Losses: 0
                 </div>
             </div>
         </div>
@@ -55,10 +60,14 @@
                 <img id="turtleimage4" src="assets/images/raphael.jpg" height="200px" width="150px">
             </div>
         </div>
-        <div class="row currentScore" id="currentScore">
-            0
-        </div>
-        <button type="button" class="btn" id="startGameBtn">Start Game</button>
+    </div>
+    <div class="container">
+        <div class="row startButtonContainer">
+            <button type="button" class="btn" id="startGameBtn">Start Game</button>
+        </div>        
+    </div>
+    <div class="winningImage col-md-12">
+        <img src="assets/images/Cowabunga.jpg" id="winningImage">
     </div>
     <script src="assets/logic/gem.js"></script>
 </body>

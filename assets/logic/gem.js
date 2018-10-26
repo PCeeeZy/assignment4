@@ -3,24 +3,30 @@ $(document).ready(function() {
 
 // **************What happens upon start of new game************
 
-    $("#startGameBtn").on("click", function newGame() {
-        // ********Global Variables*************
-        var randomTarget;
-    
-        var turtleValue1;
-        var turtleValue2;
-        var turtleValue3;
-        var turtleValue4;
-    
-        var currentScore = 0;
-        var scoreboardWins = 0;
-        var scoreboardLossses = 0;
+    $("#winningImage").hide();
 
-        gameBegin = true;
+    var randomTarget;
+        
+    var turtleValue1;
+    var turtleValue2;
+    var turtleValue3;
+    var turtleValue4;
+
+    var currentScore = 0;
+    var scoreboardWins = 0;
+    var scoreboardLossses = 0;
+    var enableImageClick = true;
+    randomTarget = (Math.floor((Math.random()) * 101) + 19);
+
+    $("#startGameBtn").on("click", function newGame() {
+
+        // ********Global Variables*************
+        
+        enableImageClick = true;
+        // gameBegin = true;
 
         // randomTarget--- The random number shown at the start of the game should be between 19 - 120.
         // choose random number between 19-120
-        randomTarget = (Math.floor((Math.random()) * 101) + 19);
         console.log("Target: " + randomTarget);
 
         // display random number to #randomGoal
@@ -39,39 +45,62 @@ $(document).ready(function() {
 
         // hide start button
         $("#startGameBtn").hide();
+        
+    });
+            // **********What happens when you click a turtle*******************
 
-        // **********What happens when you click a turtle*******************
-
-        // Each image CLICK will add their value to the currentScore
-        // currentScore is updated and pushed to #currentScore
-            
-        $("#turtle1").on("click", function() {
-            currentScore = currentScore + turtleValue1;
-            $("#currentScore").text(currentScore);
-        });
-        // Repeat for each turtle
-        $("#turtle2").on("click", function() {
-            currentScore = currentScore + turtleValue2;
-            $("#currentScore").text(currentScore);
-        });
-        $("#turtle3").on("click", function() {
-            currentScore = currentScore + turtleValue3;
-            $("#currentScore").text(currentScore);
-        });
-        $("#turtle4").on("click", function() {
-            currentScore = currentScore + turtleValue4;
-            $("#currentScore").text(currentScore);
-        });
+    // Each image CLICK will add their value to the currentScore
+    // currentScore is updated and pushed to #currentScore
+        
+    $("#turtle1").on("click", function() {
+        if(!enableImageClick){
+            return false;
+        }
+        currentScore = currentScore + turtleValue1;
+        $("#currentScore").text("Your current score is: " + currentScore);
+        checkScore();
+    });
+    // Repeat for each turtle
+    $("#turtle2").on("click", function() {
+        if(!enableImageClick){
+            return false;
+        }
+        currentScore = currentScore + turtleValue2;
+        $("#currentScore").text("Your current score is: " + currentScore);
+        checkScore();
+    });
+    $("#turtle3").on("click", function() {
+        if(!enableImageClick){
+            return false;
+        }
+        currentScore = currentScore + turtleValue3;
+        $("#currentScore").text("Your current score is: " + currentScore);
+        checkScore();
+    });
+    $("#turtle4").on("click", function() {
+        if(!enableImageClick){
+            return false;
+        }
+        currentScore = currentScore + turtleValue4;
+        $("#currentScore").text("Your current score is: " + currentScore);
+        checkScore();
+    });
+    function checkScore(){
         //  ******LOSS CONDITION******
-
         // If currentScore is GREATER than randomTarget then add a loss to scoreboard and reset the game.
         if (currentScore > randomTarget) {
-            scoreboardLosses++;
-            $("#scoreboardLosses").text("Losses: " + scoreboardLosses);
-            gameBegin = false;
+            scoreboardLossses++;
+            $("#scoreboardLosses").text("Losses: " + scoreboardLossses);
+            // gameBegin = false;
             $("#startGameBtn").show();
+            currentScore = 0;
+            $("#currentScore").text("Your current score is: " + currentScore);
+            scoreboardWins = 0;
+            scoreboardLossses = 0;
+            randomTarget = (Math.floor((Math.random()) * 101) + 19);
+            enableImageClick =false;
 
-        };
+        }
 
         // *******WIN CONDITION**********
 
@@ -79,8 +108,19 @@ $(document).ready(function() {
         if (currentScore === randomTarget) {
             scoreboardWins++;
             $("#scoreboardWins").text("Wins: " + scoreboardWins );
-            gameBegin = false;
+            $("#winningImage").show();
+            setTimeout(function() {
+                $("#winningImage").hide()
+            }, 5000);
+            // gameBegin = false;
             $("#startGameBtn").show();
-        };
-    })
-})
+            currentScore = 0;
+            $("#currentScore").text("Your current score is: " + currentScore);
+            scoreboardWins = 0;
+            scoreboardLossses = 0;
+            randomTarget = (Math.floor((Math.random()) * 101) + 19);
+            enableImageClick =false;
+
+        }
+    }
+});

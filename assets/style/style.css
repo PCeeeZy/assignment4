@@ -1,0 +1,35 @@
+.container {
+    padding: 20px 20px 20px 20px;
+}
+
+.contentContainer {
+    background-color: limegreen;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    color: limegreen;
+    background-color: black;
+    padding: 10px 0px 10px 0px;
+}
+
+.roundInfo  {
+    text-align: center;
+    color: limegreen;
+    background-color: black;
+    margin-bottom: 20px;
+    padding: 10px 0px 10px 0px;
+}
+
+#startGameBtn {
+    margin: auto;
+    background-color: limegreen;
+    color: white;
+}
+#winningImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
