@@ -101,8 +101,8 @@ $(document).ready(function() {
             $("#startGameBtn").show();
             currentScore = 0;
             $("#currentScore").text("Your current score is: " + currentScore);
-            scoreboardWins = 0;
-            scoreboardLossses = 0;
+            // scoreboardWins = 0;
+            // scoreboardLossses = 0;
             randomTarget = (Math.floor((Math.random()) * 101) + 19);
             enableImageClick =false;
 
@@ -123,8 +123,8 @@ $(document).ready(function() {
             $("#startGameBtn").show();
             currentScore = 0;
             $("#currentScore").text("Your current score is: " + currentScore);
-            scoreboardWins = 0;
-            scoreboardLossses = 0;
+            // scoreboardWins = 0;
+            // scoreboardLossses = 0;
             randomTarget = (Math.floor((Math.random()) * 101) + 19);
             enableImageClick =false;
 
